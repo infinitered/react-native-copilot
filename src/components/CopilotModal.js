@@ -127,6 +127,7 @@ class CopilotModal extends Component<Props, State> {
 
     const stepVerticalOffset =
       this.props.currentStep.tooltip && this.props.currentStep.tooltip.verticalOffset ? this.props.currentStep.tooltip.verticalOffset : null;
+    const isStepTooltipFullWidth = (this.props.currentStep.tooltip && this.props.currentStep.tooltip.fullWidth)
 
     const tooltip = {};
     const arrow = {};
@@ -153,12 +154,22 @@ class CopilotModal extends Component<Props, State> {
       arrow.left = tooltip.left + MARGIN;
     }
 
-    if (stepVerticalOffset && tooltip.top) {
-      tooltip.top = tooltip.top + stepVerticalOffset;
+    // step-specific vertical offset
+    if (stepVerticalOffset && verticalPosition === 'bottom') {
+      tooltip.top = tooltip.top - stepVerticalOffset;
       arrow.top = arrow.top + stepVerticalOffset;
-    } else if (stepVerticalOffset && arrow.bottom) {
-      tooltip.bottom = tooltip.bottom + -stepVerticalOffset;
-      arrow.bottom = arrow.bottom + -stepVerticalOffset;
+    } else if (stepVerticalOffset) {
+      tooltip.bottom = tooltip.bottom - stepVerticalOffset;
+      arrow.bottom = arrow.bottom + stepVerticalOffset;
+    }
+
+    // step-specific with override
+    if (isStepTooltipFullWidth && horizontalPosition === 'left') {
+      tooltip.right = MARGIN;
+      tooltip.maxWidth = layout.width - MARGIN * 2;
+    } else if (isStepTooltipFullWidth) {
+      tooltip.left = MARGIN;
+      tooltip.maxWidth = layout.width - MARGIN * 2;
     }
 
     const animate = {
