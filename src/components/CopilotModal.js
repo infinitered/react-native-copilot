@@ -157,10 +157,10 @@ class CopilotModal extends Component<Props, State> {
     // step-specific vertical offset
     if (stepVerticalOffset && verticalPosition === 'bottom') {
       tooltip.top = tooltip.top - stepVerticalOffset;
-      arrow.top = arrow.top + stepVerticalOffset;
+      arrow.top = arrow.top - stepVerticalOffset;
     } else if (stepVerticalOffset) {
       tooltip.bottom = tooltip.bottom - stepVerticalOffset;
-      arrow.bottom = arrow.bottom + stepVerticalOffset;
+      arrow.bottom = arrow.bottom - stepVerticalOffset;
     }
 
     // step-specific with override

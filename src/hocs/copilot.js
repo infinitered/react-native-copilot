@@ -28,7 +28,7 @@ type State = {
   backdropColor: string
 };
 
-const copilot = ({
+export default copilot = ({
   overlay,
   tooltipComponent,
   stepNumberComponent,
@@ -205,5 +205,3 @@ const copilot = ({
 
     return hoistStatics(Copilot, WrappedComponent);
   };
-
-export default copilot;
