@@ -24,14 +24,12 @@ export default StyleSheet.create({
   },
   tooltip: {
     position: 'absolute',
-    paddingTop: 15,
-    paddingHorizontal: 15,
     backgroundColor: '#fff',
-    borderRadius: 3,
-    overflow: 'hidden',
-  },
-  tooltipText: {
-
+    shadowColor: "black",
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 0, height: 24 },
+    shadowRadius: 24,
+    elevation: 1
   },
   tooltipContainer: {
     flex: 1,
