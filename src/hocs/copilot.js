@@ -70,11 +70,13 @@ export default copilot = ({
 
       getLastStep = (): ?Step => getLastStep(this.state.steps);
 
-      getPrevStep = (step: ?Step = this.state.currentStep): ?Step =>
-        getPrevStep(this.state.steps, step);
+      getPrevStep = (step: ?Step = this.state.currentStep): ?Step => {
+        return step ? getPrevStep(this.state.steps, step) : null
+      }
 
-      getNextStep = (step: ?Step = this.state.currentStep): ?Step =>
-        getNextStep(this.state.steps, step);
+      getNextStep = (step: ?Step = this.state.currentStep): ?Step => {
+        return step ? getNextStep(this.state.steps, step) : null
+      }
 
       setCurrentStep = async (step: Step, move?: boolean = true): void => {
         await this.setState({ currentStep: step });
@@ -186,6 +188,8 @@ export default copilot = ({
               isLastStep={this.isLastStep()}
               currentStepNumber={this.getStepNumber()}
               currentStep={this.state.currentStep}
+              nextStep={this.getNextStep()}
+              prevStep={this.getPrevStep()}
               stepNumberComponent={stepNumberComponent}
               tooltipComponent={tooltipComponent}
               overlay={overlay}

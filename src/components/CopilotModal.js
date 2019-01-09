@@ -11,6 +11,8 @@ type Props = {
   prev: () => void,
   currentStepNumber: number,
   currentStep: ?Step,
+  nextStep: ?Step,
+  prevStep: ?Step,
   visible: boolean,
   isFirstStep: boolean,
   isLastStep: boolean,
@@ -292,6 +294,8 @@ class CopilotModal extends Component<Props, State> {
           isFirstStep={this.props.isFirstStep}
           isLastStep={this.props.isLastStep}
           currentStep={this.props.currentStep}
+          nextStepName={this.props.nextStep ? this.props.nextStep.name : null}
+          prevStepName={this.props.prevStep ? this.props.prevStep.name : null}
           handleNext={this.handleNext}
           handlePrev={this.handlePrev}
           handleStop={this.handleStop}

@@ -15,6 +15,8 @@ type Props = {
   handlePrev: func,
   handleStop: func,
   currentStep: Step,
+  nextStepName: string,
+  prevStepName: string
 };
 
 const Tooltip = ({
@@ -23,7 +25,7 @@ const Tooltip = ({
   handleNext,
   handlePrev,
   handleStop,
-  currentStep,
+  currentStep
 }: Props) => (
   <View>
     <View style={styles.tooltipContainer}>
