@@ -259,6 +259,7 @@ class CopilotModal extends Component<Props, State> {
         easing={this.props.easing}
         animationDuration={this.props.animationDuration}
         backdropColor={this.props.backdropColor}
+        noHighlight={this.props.currentStep.mask && this.props.currentStep.mask.noHighlight}
       />
     );
   }
@@ -301,7 +302,9 @@ class CopilotModal extends Component<Props, State> {
           handleStop={this.handleStop}
         />
       </Animated.View>,
-      <Animated.View key="arrow" style={[styles.arrow, this.state.arrow]} />
+      this.props.currentStep.tooltip && this.props.currentStep.tooltip.hideArrow ? null : (
+        <Animated.View key="arrow" style={[styles.arrow, this.state.arrow]} />
+      )
     ];
   }
 

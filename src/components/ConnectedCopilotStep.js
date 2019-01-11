@@ -10,7 +10,8 @@ type Props = {
   active?: boolean,
   _copilot: CopilotContext,
   children: React$Element,
-  tooltip?: {verticalOffset?: number}
+  tooltip?: {},
+  mask?: {},
 };
 
 class ConnectedCopilotStep extends Component<Props> {
@@ -49,7 +50,8 @@ class ConnectedCopilotStep extends Component<Props> {
       order: this.props.order,
       target: this,
       wrapper: this.wrapper,
-      tooltip: this.props.tooltip
+      tooltip: this.props.tooltip,
+      mask: this.props.mask
     });
   }
 

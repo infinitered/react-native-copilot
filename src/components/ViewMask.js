@@ -18,6 +18,7 @@ type Props = {
   animationDuration: number,
   animated: boolean,
   backdropColor: string,
+  noHighlight: boolean
 };
 
 type State = {
@@ -63,15 +64,31 @@ class ViewMask extends Component<Props, State> {
     const { size, position } = this.state;
     const width = this.props.layout ? this.props.layout.width : 500;
     const height = this.props.layout ? this.props.layout.height : 500;
+    let leftOverlayRight = 0;
+    let rightOverlayLeft = 0;
+    let bottomOverlayTopBoundary = 0;
+    let topOverlayBottomBoundary = 0;
+    let verticalOverlayLeftBoundary = 0;
+    let verticalOverlayRightBoundary = 0;
 
-    const leftOverlayRight = Animated.add(width, Animated.multiply(position.x, -1));
-    const rightOverlayLeft = Animated.add(size.x, position.x);
-    const bottomOverlayTopBoundary = Animated.add(size.y, position.y);
-    const topOverlayBottomBoundary = Animated.add(height, Animated.multiply(-1, position.y));
-    const verticalOverlayLeftBoundary = position.x;
-    const verticalOverlayRightBoundary = Animated.add(
-      width, Animated.multiply(-1, rightOverlayLeft),
-    );
+    if (this.props.noHighlight) {
+      leftOverlayRight = 0;
+      rightOverlayLeft = null;
+      bottomOverlayTopBoundary = null;
+      topOverlayBottomBoundary = null;
+      verticalOverlayLeftBoundary = null;
+      verticalOverlayRightBoundary = null;
+    } else {
+      leftOverlayRight = Animated.add(width, Animated.multiply(position.x, -1));
+      rightOverlayLeft = Animated.add(size.x, position.x);
+      bottomOverlayTopBoundary = Animated.add(size.y, position.y);
+      topOverlayBottomBoundary = Animated.add(height, Animated.multiply(-1, position.y));
+      verticalOverlayLeftBoundary = position.x;
+      verticalOverlayRightBoundary = Animated.add(
+        width, Animated.multiply(-1, rightOverlayLeft),
+      );
+    }
+
 
     return (
       <View style={this.props.style}>
