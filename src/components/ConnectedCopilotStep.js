@@ -12,6 +12,7 @@ type Props = {
   children: React$Element,
   tooltip?: {},
   mask?: {},
+  scrollView?: React$Element
 };
 
 class ConnectedCopilotStep extends Component<Props> {
@@ -51,7 +52,8 @@ class ConnectedCopilotStep extends Component<Props> {
       target: this,
       wrapper: this.wrapper,
       tooltip: this.props.tooltip,
-      mask: this.props.mask
+      mask: this.props.mask,
+      scrollView: this.props.scrollView
     });
   }
 

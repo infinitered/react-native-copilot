@@ -82,9 +82,36 @@ export default copilot = ({
         await this.setState({ currentStep: step });
         this.eventEmitter.emit('stepChange', step);
 
-        if (move) {
-          this.moveToCurrentStep();
+        const { scrollView } = this.state.currentStep
+
+
+
+
+
+
+
+        console.log(this.state.currentStep.getScrollView())
+
+
+
+
+        if (scrollView) {
+        //   this.moveToCurrentStep(); const scrollView = this.state.scrollView.current;
+        //   const relativeSize = await this.state.currentStep.wrapper.measureLayout(ReactNative.findNodeHandle(scrollView), (x, y, w, h) => {
+        //     const yOffsett = y > 0 ? y - (h / 2) : 0;
+        //     scrollView.scrollTo({ y: yOffsett, animated: false });
+        //   });
         }
+
+        // setTimeout(() => {
+        //   if (move) {
+        //     this.moveToCurrentStep();
+        //   }
+        // }, this.state.scrollView ? 100 : 0)
+
+        // if (move) {
+        //   this.moveToCurrentStep();
+        // }
       }
 
       setVisibility = (visible: boolean): void => new Promise((resolve) => {
