@@ -82,6 +82,7 @@ export default copilot = ({
         await this.setState({ currentStep: step });
         this.eventEmitter.emit('stepChange', step);
 
+        const delay = step.delay || 0
         const scrollView = step.getScrollView ? step.getScrollView() : null
 
         if (scrollView) {
@@ -96,7 +97,7 @@ export default copilot = ({
             if (move) {
               this.moveToCurrentStep();
             }
-          }, scrollView ? 100 : 0);
+          }, scrollView ? delay + 100 : delay);
       }
 
       setVisibility = (visible: boolean): void => new Promise((resolve) => {

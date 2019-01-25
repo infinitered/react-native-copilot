@@ -12,7 +12,8 @@ type Props = {
   children: React$Element,
   tooltip?: {},
   mask?: {},
-  getScrollView?: any
+  getScrollView?: any,
+  delay?: number
 };
 
 class ConnectedCopilotStep extends Component<Props> {
@@ -53,7 +54,8 @@ class ConnectedCopilotStep extends Component<Props> {
       wrapper: this.wrapper,
       tooltip: this.props.tooltip,
       mask: this.props.mask,
-      getScrollView: this.props.getScrollView
+      getScrollView: this.props.getScrollView,
+      delay: this.props.delay
     });
   }
 
